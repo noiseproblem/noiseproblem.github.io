@@ -483,7 +483,7 @@ img {
   padding-top: 40px;
   font-size: 3rem;
   font-weight: 800;
-  line-height: 0.1;
+  line-height: 1.2;
 }
 
 #project-title {
@@ -576,6 +576,12 @@ img {
   opacity: 0.7;
 }
 
+/* ===== HAMBURGER TOGGLE (hidden on desktop) ===== */
+
+.nav-toggle {
+  display: none;
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 768px) {
@@ -583,30 +589,128 @@ img {
     --pad-x: 20px;
   }
 
-  .hero {
+  .wrap {
+    padding-inline: var(--pad-x);
+  }
+
+  .nav-home {
+    font-size: 1rem;
+  }
+
+  /* --- Mobile nav --- */
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+    position: relative;
+  }
+
+  .nav-toggle__bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  /* Animate to X when open */
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Fullscreen overlay */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #ffe8a8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-overlay .nav__list {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    text-align: center;
+    gap: 24px;
+  }
+
+  .nav-overlay .nav__list a {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: var(--font-sans);
+    opacity: 1;
+  }
+
+  /* --- Page content --- */
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    text-align: left;
+    line-height: 1.6;
   }
 
   .hero__name,
   .hero__x,
   .hero__carousel-link {
     font-size: 1.75rem;
+    line-height: 1.6;
   }
 
   .hero__carousel {
     min-width: 200px;
   }
 
+  .site-footer__note {
+    font-size: 0.7rem;
+  }
+
+  .about-grid {
+    grid-template-rows: 50vh auto;
+  }
+
   .about-top {
     flex-direction: column;
     gap: 16px;
+    padding-top: 16px;
   }
 
   .about-heading {
     font-size: 2.25rem;
+  }
+
+  .about-bio {
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
   .partner-grid {
@@ -624,6 +728,18 @@ img {
 
   .project-heading {
     font-size: 1.75rem;
+    padding-top: 16px;
+    line-height: 1.6;
+  }
+
+  .project-heading__name,
+  .project-heading__x,
+  #project-title {
+    display: block;
+  }
+
+  .project-content {
+    margin-top: 32px;
   }
 }
 

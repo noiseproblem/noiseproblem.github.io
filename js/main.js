@@ -1,6 +1,32 @@
 (function () {
   "use strict";
 
+  /* ===== MOBILE NAV TOGGLE ===== */
+
+  var navToggle = document.querySelector(".nav-toggle");
+  var navOverlay = document.querySelector(".nav-overlay");
+
+  if (navToggle && navOverlay) {
+    navToggle.addEventListener("click", function () {
+      var isOpen = navToggle.classList.toggle("is-open");
+      navOverlay.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+
+    // Close menu when a link is clicked
+    navOverlay.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navToggle.classList.remove("is-open");
+        navOverlay.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Open menu");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+
   /* ===== HOME — CAROUSEL ===== */
 
   var carouselLinks = document.querySelectorAll(".hero__carousel-link");
