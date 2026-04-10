@@ -105,21 +105,20 @@
     }
 
     function onTypewriterDone() {
-      // Show "Listed here, are a few"
+      // Show "Listed here are a few"
       var listed = document.getElementById("about-listed");
       if (listed) listed.classList.add("is-visible");
-
-      // Stagger in partner grid items
-      var items = document.querySelectorAll(".partner-grid li");
-      items.forEach(function (item, i) {
-        setTimeout(function () {
-          item.classList.add("is-visible");
-        }, 60 * i);
-      });
     }
 
-    // Start typing on page load
+    // Start typing and partner grid pop-in simultaneously on page load
     typeNext();
+
+    var partnerItems = document.querySelectorAll(".partner-grid li");
+    partnerItems.forEach(function (item, i) {
+      setTimeout(function () {
+        item.classList.add("is-visible");
+      }, 200 * i);
+    });
   }
 
   /* ===== PROJECTS PAGE ===== */
@@ -210,17 +209,22 @@
       var data = projectData[key];
       if (!data) return;
 
+      projectTitleEl.classList.remove("is-exiting", "is-active", "is-static");
+      void projectTitleEl.offsetWidth;
       projectTitleEl.textContent = data.title;
       document.title = data.title + " — Lauren Tate Baeza";
+      void projectTitleEl.offsetWidth;
+      if (animate) {
+        projectTitleEl.classList.add("is-active");
+      } else {
+        projectTitleEl.classList.add("is-static");
+      }
 
       // Build list
       projectListEl.innerHTML = "";
       data.items.forEach(function (item) {
         var li = document.createElement("li");
-        var a = document.createElement("a");
-        a.href = "#";
-        a.textContent = item;
-        li.appendChild(a);
+        li.textContent = item;
         projectListEl.appendChild(li);
       });
 
@@ -263,7 +267,8 @@
     // Listen for hash changes
     window.addEventListener("hashchange", function () {
       var key = getHashKey();
-      // Fade out
+      projectTitleEl.classList.remove("is-active", "is-static");
+      projectTitleEl.classList.add("is-exiting");
       projectContent.classList.add("is-fading");
       setTimeout(function () {
         renderProject(key, true);

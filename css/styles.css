@@ -91,8 +91,13 @@ img {
 }
 
 .wrap {
-  width: min(100% - var(--pad-x) * 2, var(--max-width));
-  margin-inline: auto;
+  width: 100%;
+  padding-inline: 100px;
+}
+
+.wrap-nav {
+  width: 100%;
+  padding-inline: var(--pad-x);
 }
 
 /* ===== NAV (all pages) ===== */
@@ -104,7 +109,7 @@ img {
   background: var(--color-bg);
 }
 
-.site-header .wrap {
+.site-header .wrap-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -276,25 +281,43 @@ img {
 
 /* ===== ABOUT PAGE ===== */
 
+.about-grid {
+  display: grid;
+  grid-template-rows: 25vh auto;
+}
+
+.about-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  padding-top: 40px;
+  overflow: hidden;
+}
+
 .about-heading {
   margin: 0;
-  padding-top: 40px;
   font-size: 3rem;
   font-weight: 800;
   line-height: 1.2;
+  flex-shrink: 0;
 }
 
 .about-bio {
-  max-width: 800px;
-  margin: 40px auto 0;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.7;
-  text-align: center;
+  flex: 1;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.about-bio__typewriter {
+  margin: 0;
 }
 
 .about-bio strong {
   font-weight: 800;
+  color: #3024c3;
 }
 
 .typewriter-cursor {
@@ -312,10 +335,12 @@ img {
 }
 
 .about-listed {
-  text-align: center;
-  margin-top: 24px;
-  font-size: 1rem;
-  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -335,37 +360,41 @@ img {
   grid-template-columns: repeat(3, 1fr);
   gap: 8px 32px;
   list-style: none;
-  margin: 48px 0 0;
+  margin: 0;
   padding: 0;
 }
 
 .partner-grid li {
-  font-size: 0.875rem;
+  font-family: var(--font-nav);
+  font-style: normal;
+  font-size: 1.1rem;
   font-weight: 200;
   line-height: 1.8;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: scale(0.6);
+  transform-origin: left center;
 }
 
 .partner-grid li.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  animation: popIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 /* ===== CONTACT PAGE ===== */
 
+.contact-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
 .contact-heading {
   margin: 0;
-  padding-top: 40px;
   font-size: 2.625rem;
   font-weight: 800;
   line-height: 1.25;
-  max-width: 700px;
 }
 
 .contact-form {
-  max-width: 700px;
   margin-top: 40px;
 }
 
@@ -453,8 +482,29 @@ img {
   margin: 0;
   padding-top: 40px;
   font-size: 3rem;
-  font-weight: 200;
-  line-height: 1.2;
+  font-weight: 800;
+  line-height: 0.1;
+}
+
+#project-title {
+  display: inline-block;
+  vertical-align: baseline;
+  transform-origin: left center;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+#project-title.is-active {
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+#project-title.is-exiting {
+  animation: popOut 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+#project-title.is-static {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .project-content {
@@ -467,9 +517,9 @@ img {
 }
 
 .project-subheading {
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin: 0 0 24px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 12px;
   display: inline-block;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -492,9 +542,9 @@ img {
 }
 
 .project-list li {
-  font-size: 0.875rem;
-  font-weight: 200;
-  line-height: 2;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2.5;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -505,26 +555,17 @@ img {
   transform: translateY(0);
 }
 
-.project-list li a {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.project-list li a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .project-next {
   display: inline-block;
   margin-top: 80px;
   margin-bottom: 80px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 800;
   color: var(--color-text);
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-color: transparent;
+  transition: opacity 0.2s ease;
 }
 
 .project-next.underline-in {
@@ -557,6 +598,11 @@ img {
 
   .hero__carousel {
     min-width: 200px;
+  }
+
+  .about-top {
+    flex-direction: column;
+    gap: 16px;
   }
 
   .about-heading {

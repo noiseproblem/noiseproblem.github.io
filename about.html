@@ -12,10 +12,11 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
-      <div class="wrap">
+      <div class="wrap-nav">
         <a class="nav-home" href="index.html">Home</a>
         <nav aria-label="Primary">
           <ul class="nav__list">
+            <li><a href="projects.html#nigeria">Projects</a></li>
             <li><a href="about.html" class="is-active">About</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -23,17 +24,22 @@
       </div>
     </header>
 
-    <main id="main">
-      <div class="wrap">
-        <h1 class="about-heading">About</h1>
+    <main id="main" class="about-layout">
+      <div class="wrap about-grid">
+        <div class="about-top">
+          <h1 class="about-heading">About</h1>
 
-        <div class="about-bio" id="typewriter-target"
-          data-text='I am an arts leader and political historian who— <strong>in partnership with cultural and educational institutions, arts nonprofits, and federal, state, and municipal governments</strong> —has organized over 20 exhibitions and special projects, and presented over 50 lectures and public talks related to Black and African art, culture, and society in the 20th century.'>
+          <div class="about-bio">
+            <div
+              class="about-bio__typewriter"
+              id="typewriter-target"
+              data-text='I am an arts leader and political historian who— <strong>in partnership with cultural and educational institutions, arts nonprofits, and federal, state, and municipal governments</strong> —has organized over 20 exhibitions and special projects, and presented over 50 lectures and public talks related to Black and African art, culture, and society in the 20th century.'
+            ></div>
+            <p class="about-listed" id="about-listed">
+              Listed <a href="#partners">here</a> are a few
+            </p>
+          </div>
         </div>
-
-        <p class="about-listed" id="about-listed">
-          Listed <a href="#partners">here</a>, are a few
-        </p>
 
         <ul class="partner-grid" id="partners">
           <li>Art for Amnesty</li>
