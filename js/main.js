@@ -35,8 +35,8 @@
     var paused = false;
     var timerId = null;
     var transitioning = false;
-    var DISPLAY_MS = 3000;
-    var POP_OUT_MS = 250;
+    var DISPLAY_MS = 2500;
+    var POP_OUT_MS = 100;
 
     function advance() {
       if (transitioning) return;
@@ -143,7 +143,7 @@
     partnerItems.forEach(function (item, i) {
       setTimeout(function () {
         item.classList.add("is-visible");
-      }, 200 * i);
+      }, 80 * i);
     });
   }
 
@@ -210,7 +210,7 @@
         "Women and Ceramic Arts in Africa",
         "Clay as Living Archive with Jareh Das, Adebunmi Gbadebo and Anina Major",
         "Beyond Mythologies: Black Women Heroes of the Atlantic with Grace Kisa and Thabisile Griffin",
-        "I See (Wo)men As Trees artist talk with Taiye Idahor",
+        "I See (Wo)men As Trees in conversation with Taiye Idahor",
         "African Modernism: Women in Focus",
         "Women and Water Scarcity in East Africa",
         "Black Women in STEM",
@@ -272,7 +272,7 @@
         items.forEach(function (item, i) {
           setTimeout(function () {
             item.classList.add("is-visible");
-          }, 80 * i);
+          }, 40 * i);
         });
       } else {
         projectSubheading.classList.add("underline-in");

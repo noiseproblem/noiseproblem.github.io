@@ -244,13 +244,13 @@ img {
 }
 
 .hero__carousel-link.is-active {
-  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: popIn 0.15s ease-out forwards;
   pointer-events: auto;
   cursor: pointer;
 }
 
 .hero__carousel-link.is-exiting {
-  animation: popOut 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+  animation: popOut 0.1s ease-in forwards;
 }
 
 .hero__carousel-link.is-active:hover {
@@ -370,13 +370,14 @@ img {
   font-size: 1.1rem;
   font-weight: 200;
   line-height: 1.8;
+  color: #3024c3;
   opacity: 0;
   transform: scale(0.6);
   transform-origin: left center;
 }
 
 .partner-grid li.is-visible {
-  animation: popIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: popIn 0.15s ease-out forwards;
 }
 
 /* ===== CONTACT PAGE ===== */
@@ -495,11 +496,11 @@ img {
 }
 
 #project-title.is-active {
-  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: popIn 0.15s ease-out forwards;
 }
 
 #project-title.is-exiting {
-  animation: popOut 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+  animation: popOut 0.1s ease-in forwards;
 }
 
 #project-title.is-static {
