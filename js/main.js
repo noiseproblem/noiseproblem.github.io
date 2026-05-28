@@ -35,7 +35,7 @@
     var paused = false;
     var timerId = null;
     var transitioning = false;
-    var DISPLAY_MS = 2500;
+    var DISPLAY_MS = 1500;
     var POP_OUT_MS = 100;
 
     function advance() {
@@ -159,7 +159,7 @@
         "Bruce Onobrakpeya: The Mask and the Cross",
         "Bruce Onobrakpeya and dele jegede in Conversation",
         "NMAFA at 60: A Weekend with Bruce Onobrakpeya",
-        "Nigeria\u2019s Latest Food Sovereignty Struggle: The World is Watching publication",
+        "Nigeria\u2019s Latest Food Sovereignty Struggle: The World is Watching",
         "Austere Imaginary",
       ],
       next: { hash: "south-africa", label: "To South Africa" },
@@ -210,7 +210,7 @@
         "Women and Ceramic Arts in Africa",
         "Clay as Living Archive with Jareh Das, Adebunmi Gbadebo and Anina Major",
         "Beyond Mythologies: Black Women Heroes of the Atlantic with Grace Kisa and Thabisile Griffin",
-        "I See (Wo)men As Trees in conversation with Taiye Idahor",
+        "I See (Wo)men As Trees: Lauren Tate Baeza in conversation with Taiye Idahor",
         "African Modernism: Women in Focus",
         "Women and Water Scarcity in East Africa",
         "Black Women in STEM",
