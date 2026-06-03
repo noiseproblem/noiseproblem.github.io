@@ -714,8 +714,14 @@ img {
     line-height: 1.5;
   }
 
+  /* Single column: tight line-height within an item, clear gap between items. */
   .partner-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .partner-grid li {
+    line-height: 1.4;
   }
 
   .contact-heading {
@@ -727,20 +733,37 @@ img {
     gap: 24px;
   }
 
+  /* Keep "Lauren Tate Baeza X Title" on one line; scale to fit the viewport. */
   .project-heading {
-    font-size: 1.75rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
     padding-top: 16px;
-    line-height: 1.6;
-  }
-
-  .project-heading__name,
-  .project-heading__x,
-  #project-title {
-    display: block;
+    line-height: 1.2;
+    white-space: nowrap;
+    font-size: clamp(1rem, 4.5vw, 1.75rem);
   }
 
   .project-content {
     margin-top: 32px;
+  }
+
+  /* Let long titles wrap; tight line-height within an item, clear gap between items. */
+  .project-list li {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+
+  /* Last item already adds 20px below, so this is the gap above the link. */
+  .project-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Tighter, proportional spacing for the next-project link on mobile. */
+  .project-next {
+    margin-top: 40px;
+    margin-bottom: 56px;
   }
 }
 
